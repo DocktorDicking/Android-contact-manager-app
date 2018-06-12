@@ -1,0 +1,31 @@
+<resources>
+    <!-- Activity names and hints -->
+    <string name="app_name">Business relation manager</string>
+    <string name="app_contactList">Contact list</string>
+    <string name="app_contact_detail">Contact detail</string>
+    <string name="app_hint_name">Add a new contact or browse existing contacts</string>
+    <string name="app_hint_cDetail">Delete or alter a contact.</string>
+
+    <!-- Input hints -->
+    <string name="hint_fName">First name</string>
+    <string name="hint_lName">Last name</string>
+    <string name="hint_cName">Company name</string>
+    <string name="hint_tel">Phone number</string>
+    <string name="hint_mail">Email</string>
+
+    <!-- Button taxt -->
+    <string name="btn_saveButton">Save info</string>
+    <string name="btn_shwContacts">Contacts</string>
+    <string name="btn_updateInfo">Update info</string>
+    <string name="btn_deleteContact">Delete contact</string>
+
+    <!-- Toast text -->
+    <string name="tst_savingContactSuccess">Saved contact successful</string>
+    <string name="tst_savingContactFailed">Could not save contact</string>
+    <string name="tst_deletedContactSuccess">Contact deleted…</string>
+    <string name="tst_deletedContactFailed">Contact could not be deleted</string>
+    <string name="tst_updatedContactSuccess">Contact info is updated</string>
+    <string name="tst_updatedContactFailed">Contact could not updated</string>
+    <string name="tst_contactListEmpty">No contacts found…</string>
+    <string name="tst_contactListFilled">Contacts retrieved successful</string>
+</resources>
