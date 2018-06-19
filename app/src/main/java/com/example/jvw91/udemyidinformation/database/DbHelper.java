@@ -59,6 +59,14 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     /**
+     * For testing. Clears the database.
+     */
+    public void clearDbAndRecreate() {
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL(DB_Contract.Contact.DROP_TABLE);
+        db.execSQL(DB_Contract.Contact.CREATE_TABLE);
+    }
+    /**
      * Stores a contact object to the database. Creates Toasts to notify user.
      * @param contact
      * @return success
