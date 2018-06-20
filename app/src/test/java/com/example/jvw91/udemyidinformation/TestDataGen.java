@@ -12,5 +12,4 @@ public class TestDataGen {
         contact.setlName("Hakker");
         return contact;
     }
-
 }

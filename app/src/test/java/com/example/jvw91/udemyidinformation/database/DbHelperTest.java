@@ -6,17 +6,13 @@ import com.example.jvw91.udemyidinformation.BuildConfig;
 import com.example.jvw91.udemyidinformation.TestDataGen;
 
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
@@ -26,6 +22,7 @@ import static org.junit.Assert.*;
 public class DbHelperTest {
     Context context;
     DbHelper db;
+    final String TAG = "Unit:DbHelperTest: ";
 
     @Before
     public void setUp() {
@@ -53,6 +50,7 @@ public class DbHelperTest {
      */
     @Test
     public void retrieveContact(){
+        final String METHODTAG = TAG + "test: retrieveContact: ";
         Contact contact = new TestDataGen().testContact();
         boolean sql = db.storeContact(contact);
         if (sql) {
@@ -65,14 +63,57 @@ public class DbHelperTest {
             assertEquals(contact.getMail(), contacts.get(0).getMail());
         } else {
             //If sql fails, the whole test fails.
-            fail();
+            fail(METHODTAG + "Could not retrieve contacts");
         }
     }
 
     @Test
     public void updateContact() {
+        final String METHODTAG = TAG + "test: updateContact: ";
         Contact contact = new TestDataGen().testContact();
-        boolean sql = db.storeContact(contact);
+
+        if (db.storeContact(contact)) {
+            ArrayList<Contact> contacts = db.getContacts();
+            if (contacts.size() > 0) {
+                contact = contacts.get(0);
+                contact.setcName("Hema");
+                contact.setPhoneNum("0625887954");
+                if (db.updateContact(contact)) {
+                    contacts = db.getContacts();
+                    assertEquals("Hema", contacts.get(0).getcName());
+                    assertEquals("0625887954", contacts.get(0).getPhoneNum());
+                } else {
+                    fail(METHODTAG + "Could not update contact");
+                }
+            } else {
+                //If no contacts are returned
+                fail(METHODTAG + "Could not retrieve contact");
+            }
+        } else {
+            //If sql fails
+            fail(METHODTAG + "Could not store contact.");
+        }
+
+    }
+
+    @Test
+    public void deleteContact() {
+        final String METHODTAG = TAG + "test: deleteContact: ";
+        Contact contact = new TestDataGen().testContact();
+
+        if (db.storeContact(contact)) {
+            ArrayList<Contact> contacts = db.getContacts();
+            if (contacts.size() > 0){
+                if (db.deleteContact(contacts.get(0))) {
+                    contacts = db.getContacts();
+                    assertEquals(0, contacts.size());
+                }
+            } else {
+                fail(METHODTAG + "Could not retrieve contact");
+            }
+        } else {
+            fail(METHODTAG + "Could not save contact");
+        }
     }
 
 
