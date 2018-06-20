@@ -67,6 +67,9 @@ public class DbHelperTest {
         }
     }
 
+    /**
+     * Tests if a contact can be updated.
+     */
     @Test
     public void updateContact() {
         final String METHODTAG = TAG + "test: updateContact: ";
@@ -96,6 +99,9 @@ public class DbHelperTest {
 
     }
 
+    /**
+     * Tests if a contact can be deleted
+     */
     @Test
     public void deleteContact() {
         final String METHODTAG = TAG + "test: deleteContact: ";

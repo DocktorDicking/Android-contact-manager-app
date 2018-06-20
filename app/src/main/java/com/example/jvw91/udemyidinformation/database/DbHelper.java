@@ -59,7 +59,7 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * For testing. Clears the database.
+     * For testing. Clears the test database.
      */
     public void clearDbAndRecreate() {
         SQLiteDatabase db = getWritableDatabase();
@@ -88,6 +88,11 @@ public class DbHelper extends SQLiteOpenHelper {
         return success;
     }
 
+    /**
+     * Updates a contact.
+     * @param contact
+     * @return
+     */
     public boolean updateContact(Contact contact) {
         boolean success = false;
         SQLiteDatabase db = getWritableDatabase();
@@ -104,6 +109,11 @@ public class DbHelper extends SQLiteOpenHelper {
         return success;
     }
 
+    /**
+     * Deletes a contact
+     * @param contact
+     * @return
+     */
     public boolean deleteContact(Contact contact) {
         boolean success = false;
         SQLiteDatabase db = getWritableDatabase();
@@ -119,6 +129,10 @@ public class DbHelper extends SQLiteOpenHelper {
         return success;
     }
 
+    /**
+     * Retrieves all contacts
+     * @return
+     */
     public ArrayList<Contact> getContacts() {
         ArrayList<Contact> contacts = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
