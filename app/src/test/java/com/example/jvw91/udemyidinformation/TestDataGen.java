@@ -10,6 +10,7 @@ public class TestDataGen {
         contact.setcName("Company");
         contact.setfName("Jaap");
         contact.setlName("Hakker");
+        contact.setPhoneNum("0655879542");
         return contact;
     }
 }
